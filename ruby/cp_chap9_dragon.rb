@@ -23,7 +23,7 @@ class Dragon
 		passageOfTime
 	end
 
-	def putToBed
+	def put_to_bed
 		puts 'You put ' + @name + ' to bed.'
 		@asleep = true
 		3.times do 
@@ -104,3 +104,34 @@ class Dragon
 		end
 	end
 end
+
+pet = Dragon.new 'Hiccup'
+
+command = ''
+
+while command != 'exit'
+	puts ''
+	puts 'Enter a command to control your dragon:'
+	command = gets.chomp
+	case command
+
+		when 'list'
+			puts "feed - walk - put to sleep - toss - rock"
+		when 'feed'
+			pet.feed
+		when 'walk'
+			pet.walk
+		when 'put to sleep'
+			pet.put_to_bed
+		when 'toss'
+			pet.toss
+		when 'rock'
+			pet.rock
+		when 'exit'
+			exit
+		else
+			puts "Can't understand your command, enter 'list' for list of commands."
+		end
+
+	end
+			
