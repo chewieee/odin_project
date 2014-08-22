@@ -168,7 +168,3 @@ PROGRAM CountingChallenge
 
 
 
-
-
-
-
