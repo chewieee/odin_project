@@ -1,5 +1,5 @@
 # VCS Ruby Calisthenics
-
+=begin
 # 1. Power
 
 def power(base, exponent)
@@ -79,75 +79,117 @@ p is_prime?(14)
 # 6. Rectangle Overlap
 
 
-# The Counting Game
+=end
 
-person1 says 1
-person2 says 2
-person3 says 3
-person4 says 4
-person5 says 5
-person6 says 6
-person7 says 7
-person6 says 8
-person5 says 9
-person4 says 10
-person3 says 11
-person2 says 12
-person1 says 13
-person10 says 14
-person1 says 15
-person2 says 16
-person3 says 17
-person4 says 18
-person5 says 19
-person6 says 20
-person7 says 21
-person8 says 22
-person9 says 23
-person10 says 24
-person1 says 25
+def power(base, exponent)
+	result = 1
 
+	exponent.times do 
+		result *= base
+	end
 
-playerHash = {
-	"1" => 1,
-	"2" => 2,
-	"3" => 3,
-	"4" => 4,
-	"5" => 5,
-	"6" => 6,
-	"7" => 7,
-	"8" => nil,
-	"9" => nil,
-	"10" => nil
-}
-
-
-count = 1
-person = 1
-
-until count == 100
-
-players = ["player1", "player2", "player3"]
-
-(1..100).each do |num|
-
-	if num 
-	players = ["player1", "player2", "player3"]
-	puts "Person __ said #{num}"
-
+	result
 
 end
 
+p power(3, 4)
 
 
-PROGRAM CountingChallenge
-	You have 10 players
-	You have the numbers 1 to 100
-	EACH number is counted off by a player up to 100
-	The players count off in ascending order
-		IF the number is divisible by 7
-			The order of the players counting off is reversed
-		END
+def factorial(num)
+
+	result = 1
+
+	(1..num).each do |number|
+		result *= number
+	end
+
+	result
+end
+
+p factorial(5)
+
+
+def uniques(arg)
+
+	unique_array = []
+
+	arg.each do |item|
+		if unique_array.include?(item)
+			next
+		else
+			unique_array << item
+		end
+	end
+	unique_array
+end
+
+p uniques([1, 5, "frog", 2, 1, 3, "frog"])
+
+
+def combinations(arg1, arg2)
+	combos = []
+
+	arg1.each do |word1|
+		arg2.each do |word2|
+			combos << word1 + word2
+		end
+	end
+
+	combos
+end
+
+p combinations(["on","in"], ["to","rope"])
+
+def is_prime?(arg)
+
+	(2...arg).each do |num|
+		if arg % num == 0
+			return false
+		else
+			return true
+		end
+	end
+end
+
+
+p is_prime?(7)
+p is_prime?(14)
+
+
+
+
+class Person
+	def initialize(number)
+		@number = number
+	end
+
+	def say(count)
+		puts "Person #{@number} says #{count}"
+	end
+end
+
+def counting_game(players, count_to)
+	people = players.times.map {|x| Person.new(x+1)}
+
+	(1..count_to).each do |x|
+		person = people.shift
+		person.say(x)
+
+		if x % 7 == 0
+			people = people.reverse
+		end
+
+		people.push(person)
+
+		if x % 11 == 0
+			people.push(people.shift)
+		end
+	end
+end
+
+p counting_game(10, 100)
+
+
 
 
 

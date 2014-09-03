@@ -1,0 +1,127 @@
+# VCS Pseudocode Exercises
+
+# Grocery Shopping Pseudocode
+
+PROGRAM GroceryShopping(items)
+
+	shopping_cart = empty
+	You have a wallet balance
+
+	until shopping_cart.size == items
+		for each item on list
+			look through each aisle for item
+				IF item exists in aisle
+					add to shopping_cart
+				END
+			END
+		END
+
+		When all items have been acquired
+
+		Calculate the price of all items in shopping_cart
+		IF wallet_balance - shopping_cart price >= 0
+			checkout can be completed
+		ELSE
+			Raise an error to the user that there is not enough money
+		END
+
+end
+
+
+# PROGRAM CounterGame
+
+	There are 10 friends
+	Count is at 1
+
+	Until count reaches 100
+		
+		IF the number is divisible by 7 OR 11	
+			IF the number is divisible by 7
+				friend says the next number
+				the direction is reversed
+			END
+
+			IF the number is divisible by 11
+				friend says the next number
+				the next person is skipped
+			END
+		ELSE
+			friend says the next number
+		END
+
+		When 100 is reached, tell what person said 100
+
+	END
+
+
+	# Pagination
+
+	PROGRAM DisplayPagination
+
+		DisplayPrevious
+
+		DisplayFirstPage
+
+		For EACH number in the list of pages DO
+			IF current page number < 6
+				Display numbers 2 to current page with links to pages EXCEPT current page
+
+				Display next page number and ellipses with link to next page and ellipses as link. 
+
+			ELSIF current page number + 4 is >= last page
+				Display the current page number to second to last page number with links to pages EXCEPT current page number
+
+				Display the previous page number with link to previous page and ellipses link
+
+			ELSE
+				Display ellipses with link
+
+				Display current page number
+
+				Display previous page number with link to previous page
+				Display next page number with link to next page
+			END
+		END
+
+		DisplayNext
+
+		DisplayLastPage
+
+
+	END
+
+	PROGRAM DispalyPrevious
+		IF the current page is the first page 
+			Print the word "Previous"
+		ELSE
+			Print the word "Previous" with a link to the previous page
+		END
+	END
+
+	PROGRAM DisplayFirstPage
+		IF the current page is the first page
+			Print the number 1 
+		ELSE
+			Print the number 1 with a link to the first page
+		END
+	END
+
+	PROGRAM DispalyNext
+		IF the current page is the last page
+			Print the word "Next"
+		ELSE
+			Print the word "Next" with a link to the next page
+		END
+	END
+
+	PROGRAM DisplayLastPage
+		IF the current page is the last page
+			Print the number of last page
+		ELSE
+			Print the number of the last page with a link to the last page
+		END
+	END
+
+
+
+
