@@ -1,85 +1,6 @@
 # VCS Ruby Calisthenics
-=begin
+
 # 1. Power
-
-def power(base, exponent)
-	sum = 1
-	
-	exponent.times do
-		sum *= base
-	end
-
-	sum
-end
-
-p power(3, 4)
-
-# 2. Factorial
-
-def factorial(num)
-
-	(1..num).inject do |sum, int|
-		sum * int
-	end
-end
-
-p factorial(5)
-
-# 3. Uniques
-
-def uniques(arg)
-	uniques = []
-
-	arg.each do |item|
-		if uniques.include?(item)
-			next
-		else
-			uniques << item
-		end
-	end
-
-	uniques	
-
-end
-
-p uniques([1,5,"frog", 2, 1, 3, "frog"])
-
-# 4. Combinations
-
-def combinations(array1, array2)
-	combos = []
-
-	array1.each do |first|
-		array2.each do |sec|
-			combos << first + sec
-		end
-	end
-
-	combos
-
-end
-
-p combinations(["on", "in"], ["to", "rope"])
-
-# 5. Primes
-
-def is_prime?(num)
-
-	(2...num).each do |x|
-		if (num % x) == 0
-			return false
-		end
-	end
-	return true
-end
-
-p is_prime?(7)
-p is_prime?(14)
-
-# 6. Rectangle Overlap
-
-
-=end
 
 def power(base, exponent)
 	result = 1
@@ -95,6 +16,8 @@ end
 p power(3, 4)
 
 
+# 2. Factorial
+
 def factorial(num)
 
 	result = 1
@@ -108,6 +31,8 @@ end
 
 p factorial(5)
 
+
+# 3. Uniques 
 
 def uniques(arg)
 
@@ -126,6 +51,8 @@ end
 p uniques([1, 5, "frog", 2, 1, 3, "frog"])
 
 
+# 4. Combinations
+
 def combinations(arg1, arg2)
 	combos = []
 
@@ -139,6 +66,9 @@ def combinations(arg1, arg2)
 end
 
 p combinations(["on","in"], ["to","rope"])
+
+
+# 5. Prime
 
 def is_prime?(arg)
 
@@ -156,7 +86,56 @@ p is_prime?(7)
 p is_prime?(14)
 
 
+# 6. Rectangle Overlap
 
+class Rect
+  attr_reader :lower_left, :upper_right
+  def initialize(points)
+    @lower_left = Point.new(points[0])
+    @upper_right = Point.new(points[1])
+  end
+ 
+  def overlap?(rect)
+    left_edge < rect.right_edge &&
+      right_edge > rect.left_edge &&
+      top_edge > rect.bottom_edge &&
+      bottom_edge < rect.top_edge
+  end
+ 
+  def left_edge
+    lower_left.x
+  end
+ 
+  def right_edge
+    upper_right.x
+  end
+ 
+  def top_edge
+    upper_right.y
+  end
+ 
+  def bottom_edge
+    lower_left.y
+  end
+end
+ 
+class Point
+  attr_reader :x, :y
+  def initialize(vector)
+    @x = vector[0]
+    @y = vector[1]
+  end
+end
+ 
+def overlap(r1, r2)
+  Rect.new(r1).overlap?(Rect.new(r2))
+end
+ 
+p overlap([[0,0],[3,3]], [[1,1],[4,6]])
+p overlap([[0,0],[1,4]], [[1,1],[3,2]])
+
+
+# 7. Counting Game - Advanced Option
 
 class Person
 	def initialize(number)
@@ -188,25 +167,5 @@ def counting_game(players, count_to)
 end
 
 p counting_game(10, 100)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
